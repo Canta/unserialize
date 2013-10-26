@@ -58,24 +58,47 @@ jQuery.fn.unserialize = function(parm){
 		}
 		//for (var i = 0; i < items.length; i++) {
 		for (var i in items){
-			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, items[i]];
-			obj = this.find('[name='+ parts[0] +']');
+			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, (items[i] instanceof Array) ? items[i] : "" + items[i]];
+			console.log(parts);
+			obj = this.find('[name=\''+ parts[0] +'\']');
 			if (obj.length == 0){
 				try{
-					obj = this.parent().find('[name='+ parts[0] +']');
+					obj = this.parent().find('[name=\''+ parts[0] +'\']');
 				} catch(e){}
 			}
 			if (typeof obj.attr("type") == "string" && ( obj.attr("type").toLowerCase() == "radio" || obj.attr("type").toLowerCase() == "checkbox")){
 				 obj.each(function(index, coso) {
 					coso = $(coso);
-					if (coso.attr("value") == decodeURIComponent(parts[1].replace(/\+/g," "))){
-						 coso.prop("checked",true);
+					//if the value is an array, i gotta search the item with that value.
+					if (parts[1] instanceof Array){
+						for (var i2 in parts[1]){
+							var val = ""+parts[1][i2];
+							if (coso.attr("value") == decodeURIComponent(val.replace(/\+/g," "))){
+								coso.prop("checked",true);
+							} else {
+								if (!$.inArray(coso.val(),parts[1])){
+									coso.prop("checked",false);
+								}
+							}
+						}
 					} else {
-						 coso.prop("checked",false);
+						if (coso.attr("value") == decodeURIComponent(parts[1].replace(/\+/g," "))){
+							coso.prop("checked",true);
+						} else {
+							coso.prop("checked",false);
+						}
 					}
 				 });
+			} else if (obj[0].tagName == "SELECT" && parts[1] instanceof Array && obj.prop("multiple")){
+				//Here, i have an array for a multi-select.
+				obj.val(parts[1]);
 			} else {
-				 obj.val(decodeURIComponent(parts[1].replace(/\+/g," ")));
+				//When the value is an array, we join without delimiter
+				var val = (parts[1] instanceof Array) ? parts[1].join("") : parts[1];
+				//when the value is an object, we set the value to ""
+				val = (typeof val == "object") ? "" : val;
+				
+				obj.val(decodeURIComponent(val.replace(/\+/g," ")));
 			}
 		};
 		return this;
