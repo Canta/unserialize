@@ -56,8 +56,9 @@ jQuery.fn.unserialize = function(parm){
 		if (typeof items !== "object"){
 			throw new Error("unserialize: string or JSON object expected.");
 		}
-		for (var i = 0; i < items.length; i++) {
-			var parts = items[i].split(/=/);
+		//for (var i = 0; i < items.length; i++) {
+		for (var i in items){
+			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, items[i]];
 			obj = this.find('[name='+ parts[0] +']');
 			if (obj.length == 0){
 				try{
