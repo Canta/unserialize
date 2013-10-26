@@ -18,7 +18,7 @@ this plugin takes that serialized string and then do one of two possible
 things:
 
 1) Setting the value of every input (including selects, textareas, and 
-checkboxes) in a form according to the values in the string.
+checkboxes/radios) in a form according to the values in the string.
 
 2) Returns a JSON object with the values stated on the string.
 
@@ -27,8 +27,12 @@ checkboxes) in a form according to the values in the string.
 How to use:
 ==========
 
-This plugin has two use cases. First, it does exactly the opposite as 
-"serialize()".
+This plugin has two use cases. 
+
+
+* First use case:
+
+At first, it does exactly the opposite as "serialize()".
 
 Let's say we have a form with id "testform", and it has two text inputs,
 named "testvar1" (with a value of "1") and "testvar2" (with value "a").
@@ -50,6 +54,24 @@ $("#testform2").unserialize(result);
 What happens then is that the second form get all the values stated in 
 its inputs.
 
+But there's more. Unserialize can also takes a JSON object as parameter.
+That means you could use any ajax-received object and put it in a form 
+with one single line.
+
+```JavaScript
+var obj = {"testvar1":"testvalue"};
+$("#testform2").unserialize(obj);
+```
+
+Unserialize also has integrated logic for array handling. For example, 
+if you hace four checkboxes named "testvar[]", everyone with a different
+value, and you pass an object like "{testvar:[1,3]}", unserialize will
+check only the checkboxes with values 1 and 3, and also will uncheck the
+rest.
+
+
+
+* Second use case:
 
 
 The second use case is similar, but not directed to de-serializing the 
@@ -67,10 +89,7 @@ requires one. We call unserialize right from the jQuery namespace (or
 "$"), and NOT from a selector operation result ("$(stuff)"). 
 
 
-TODO:
-=====
 
-* Unserialize from JSON objects to forms or collection of inputs.
 
 
 
