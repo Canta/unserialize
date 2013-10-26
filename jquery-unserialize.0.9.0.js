@@ -56,10 +56,8 @@ jQuery.fn.unserialize = function(parm){
 		if (typeof items !== "object"){
 			throw new Error("unserialize: string or JSON object expected.");
 		}
-		//for (var i = 0; i < items.length; i++) {
 		for (var i in items){
 			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, (items[i] instanceof Array) ? items[i] : "" + items[i]];
-			console.log(parts);
 			obj = this.find('[name=\''+ parts[0] +'\']');
 			if (obj.length == 0){
 				try{
@@ -82,14 +80,15 @@ jQuery.fn.unserialize = function(parm){
 							}
 						}
 					} else {
-						if (coso.attr("value") == decodeURIComponent(parts[1].replace(/\+/g," "))){
+						val = "" + parts[1];
+						if (coso.attr("value") == decodeURIComponent(val.replace(/\+/g," "))){
 							coso.prop("checked",true);
 						} else {
 							coso.prop("checked",false);
 						}
 					}
 				 });
-			} else if (obj[0].tagName == "SELECT" && parts[1] instanceof Array && obj.prop("multiple")){
+			} else if (obj.length > 0 && obj[0].tagName == "SELECT" && parts[1] instanceof Array && obj.prop("multiple")){
 				//Here, i have an array for a multi-select.
 				obj.val(parts[1]);
 			} else {
