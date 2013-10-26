@@ -70,6 +70,14 @@ check only the checkboxes with values 1 and 3, and also will uncheck the
 rest.
 
 
+NOTE: this method returns the current jQuery object, so you could chain
+commands after. For example:
+
+```JavaScript
+$("#testform2").unserialize(str).unserialize(obj).submit();
+```
+
+
 
 * Second use case:
 
