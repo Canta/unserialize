@@ -60,10 +60,10 @@ jQuery.fn.unserialize = function(parm){
 		}
 		for (var i in items){
 			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, (items[i] instanceof Array) ? items[i] : "" + items[i]];
-			obj = this.find('[name=\''+ parts[0] +'\']');
+			obj = this.find('[name=\''+ decodeURIComponent(parts[0].replace(/\+/g," ")) +'\']');
 			if (obj.length == 0){
 				try{
-					obj = this.parent().find('[name=\''+ decodeURIComponent(parts[0]) +'\']');
+					obj = this.parent().find('[name=\''+ decodeURIComponent(parts[0].replace(/\+/g," ")) +'\']');
 				} catch(e){}
 			}
 			if (typeof obj.attr("type") == "string" && ( obj.attr("type").toLowerCase() == "radio" || obj.attr("type").toLowerCase() == "checkbox")){
