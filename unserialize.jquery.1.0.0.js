@@ -63,7 +63,7 @@ jQuery.fn.unserialize = function(parm){
 			obj = this.find('[name=\''+ parts[0] +'\']');
 			if (obj.length == 0){
 				try{
-					obj = this.parent().find('[name=\''+ parts[0] +'\']');
+					obj = this.parent().find('[name=\''+ decodeURIComponent(parts[0]) +'\']');
 				} catch(e){}
 			}
 			if (typeof obj.attr("type") == "string" && ( obj.attr("type").toLowerCase() == "radio" || obj.attr("type").toLowerCase() == "checkbox")){
