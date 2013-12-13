@@ -55,15 +55,15 @@ jQuery.unserialize = function(str){
 jQuery.fn.unserialize = function(parm){
 		//If not string, JSON is assumed.
 		var items = (typeof parm == "string") ? parm.split('&') : parm;
+		parts[0] = decodeURIComponent(parts[0]);
+		if (parts[0].indexOf("[]") == -1 && parts[1] instanceof Array){
+			parts[0] += "[]";
+		}
 		if (typeof items !== "object"){
 			throw new Error("unserialize: string or JSON object expected.");
 		}
 		for (var i in items){
 			var parts = (items instanceof Array) ? items[i].split(/=/) : [i, (items[i] instanceof Array) ? items[i] : "" + items[i]];
-			parts[0] = decodeURIComponent(parts[0]);
-			if (parts[0].indexOf("[]") == -1 && parts[1] instanceof Array){
-				parts[0] += "[]";
-			}
 			obj = this.find('[name=\''+ parts[0] +'\']');
 			if (obj.length == 0){
 				try{
