@@ -25,7 +25,7 @@ jQuery.unserialize = function(str){
 		var index = "";
 		for (var i = 0; i < items.length; i++) {
 			var parts = items[i].split(/=/);
-			console.log(parts[0], parts[0].indexOf("%5B"),  parts[0].indexOf("["));
+			//console.log(parts[0], parts[0].indexOf("%5B"),  parts[0].indexOf("["));
 			if (parts[0].indexOf("%5B") > -1 || parts[0].indexOf("[") > -1){
 				//Array serializado
 				index = (parts[0].indexOf("%5B") > -1) ? parts[0].replace("%5B","").replace("%5D","") : parts[0].replace("[","").replace("]","");
