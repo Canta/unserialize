@@ -1,0 +1,11 @@
+{
+    "package": {
+        "name": "Canta/unserialize",
+        "version": "1.0.2",
+        "source": {
+          "url": "https://github.com/Canta/unserialize.git",
+          "type": "git",
+          "reference": "dev-master"
+        }
+    }
+}
