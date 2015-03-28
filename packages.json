@@ -1,11 +1,17 @@
 {
-    "package": {
-        "name": "Canta/unserialize",
-        "version": "1.0.2",
-        "source": {
-          "url": "https://github.com/Canta/unserialize.git",
-          "type": "git",
-          "reference": "dev-master"
-        }
-    }
+"packages": {
+	"Canta/unserialize": {
+		"0.1.0": {
+			"name": "Canta/unserialize",
+			"version": "1.0.2",
+			"version_normalized": "1.0.2",
+			"source": {
+				"type": "git",
+				"url": "https://github.com/Canta/unserialize.git",
+				"reference": "master"
+			},
+			"type": "package"
+			}
+		}
+	}
 }

@@ -1,1 +1,23 @@
-{ "name": "Canta/unserialize", "version": "1.0.2", "dist": { "url": "https://raw.githubusercontent.com/Canta/unserialize/master/unserialize.jquery.latest.js", "type": "file" } }
+{ 
+	"name": "Canta/unserialize",
+	"description": "unserialize - jQuery plugin",
+	"keywords": ["Canta", "unserialize"],
+	"license": "LGPLv3",
+	"version": "1.0.2",
+	"dist": { 
+		"url": "https://raw.githubusercontent.com/Canta/unserialize/master/unserialize.jquery.latest.js", 
+		"type": "file" 
+	},
+	"repositories": [ {
+		"type": "package",
+		"package": {
+			"name": "Canta/unserialize",
+			"version": "1.0.2",
+			"source": {
+				"url": "https://github.com/Canta/unserialize.git",
+				"type": "git",
+				"reference": "master"
+			  }
+		 }
+	}]
+}
