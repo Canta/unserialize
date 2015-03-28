@@ -13,7 +13,7 @@ This plugin contains two functions that works in the opposite way of
 jQuery's "serialize()" function. 
 
 That is, where "serialize" takes a form (or a collection of inputs) and 
-returns an proper serialized string for HTTP requests, the functions in
+returns a proper serialized string for HTTP requests, the functions in
 this plugin takes that serialized string and then do one of two possible
 things:
 
