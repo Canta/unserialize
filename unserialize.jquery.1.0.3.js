@@ -112,7 +112,7 @@ jQuery.fn.unserialize = function(parm){
 				//When the value is an array, we join without delimiter
 				var val = (parts[1] instanceof Array) ? parts[1].join("") : parts[1];
 				//when the value is an object, we set the value to ""
-				val = ((typeof val == "object") || (typeof val == "undefined")) ? "" : val;
+				val = (typeof val == "object") ? "" : val;
 				
 				obj.val(decodeURIComponent(val.replace(/\+/g," ")));
 			}

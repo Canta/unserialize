@@ -8,7 +8,7 @@
 		"serialization",
 		"deserialization"
 	],
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"author": {
 		"name": "Daniel Cantarín",
 		"url": "https://github.com/Canta/"
@@ -17,12 +17,12 @@
 		{
 			"name": "Daniel Cantarín",
 			"email": "omega_canta@yahoo.com",
-			"url": "http://www.danielcantarin.com.ar"
+			"url": "http://www.canta.com.ar"
 		}
 	],
 	"licenses": [
 		{
-			"type": "GPL",
+			"type": "LGPL",
 			"url": "https://github.com/Canta/unserialize/blob/master/LICENSE"
 		}
 	],
